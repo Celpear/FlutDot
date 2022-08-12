@@ -1,6 +1,5 @@
-# FlutDot
+# FlutDot - Godot meets Flutter!
 
-Godot meets Flutter!
 Export your Godot app and run it in Flutter. This way you can combine high performance material design apps from Flutter and 3D visual worlds from GoDot.
 Bi-directional communication between GoDot and Flutter gives your GoDot game full access to all hardware sensor data from your smartphone out of Flutter.
 
