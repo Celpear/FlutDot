@@ -38,6 +38,6 @@ ToDo | State GoDot | State Flutter
 -------- | -------- | -------- 
 Show GoDot Web export in Flutter. | Done   | Done
 Communication between GoDot and Flutter via JS inject and Log parse. (Temporary) | In Progress   | Done
-Implement Socket.io for the Communication between GoDot and Flutter | Planned | Planned
+Implement Socket.io or just WebSocket for the Communication between GoDot and Flutter | Planned | Planned
 Implement GoDot native IOS Export in Flutter | Planned | Planned
 Implement GoDot native Android Export in Flutter | Planned | Planned
