@@ -43,5 +43,5 @@ Implement GoDot native IOS Export in Flutter | Planned | Planned
 Implement GoDot native Android Export in Flutter | Planned | Planned
 
 
-### Based on the following packages
+### This packages based on the following packages
 - [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview)
