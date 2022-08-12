@@ -41,3 +41,7 @@ Communication between GoDot and Flutter via JS inject and Log parse. (Temporary)
 Implement Socket.io or just WebSocket for the Communication between GoDot and Flutter | Planned | Planned
 Implement GoDot native IOS Export in Flutter | Planned | Planned
 Implement GoDot native Android Export in Flutter | Planned | Planned
+
+
+### Based on the following packages
+- [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview)
