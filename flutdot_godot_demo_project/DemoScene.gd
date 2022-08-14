@@ -1,10 +1,5 @@
 extends Spatial
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 # Here create a reference to the `_on_get` function (below).
 # This reference will be kept until the node is freed.
 var _callback = JavaScript.create_callback(self, "_on_get")
@@ -14,8 +9,8 @@ var _callback = JavaScript.create_callback(self, "_on_get")
 func _ready():
 	# Get the `window` object, where globally defined functions are.
 	var window = JavaScript.get_interface("window")
-	# Call the JavaScript `myFunc` function defined in the custom HTML head.
-	window.goDotJSChannel("GoDot inizialized :)")
+	# Call the JavaScript
+	#window.goDotJSChannel("GoDot to JS Function :)")
 	# Get the `axios` library (loaded from a CDN in the custom HTML head).
 	var axios = JavaScript.get_interface("axios")
 	# Make a GET request to the current location, and receive the callback when done.

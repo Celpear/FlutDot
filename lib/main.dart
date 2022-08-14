@@ -58,11 +58,11 @@ class _HomePageState extends State<HomePage> {
             child: Text(godotData),
           ),
           Align(
-            alignment: Alignment(0.9, -0.9),
+            alignment: Alignment(0.8, -0.8),
             child: TextButton(
-              child: Text("Send Test Data"),
+              child: Text("Send Hello Hero! -> GoDot"),
               onPressed: () {
-                FlutDotHandler.sendMessage("Data", "Hero!");
+                FlutDotHandler.sendMessage("Data", "Hello Hero!");
               },
             ),
           )
