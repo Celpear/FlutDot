@@ -5,6 +5,9 @@ Bi-directional communication between GoDot and Flutter gives your GoDot game ful
 
 **Repository is currently under development and should only give an impression in which direction the project should rise up.**
 
+## Test it on your Android device (Download)
+[FlutDot APK Download](https://raw.githubusercontent.com/Celpear/FlutDot/main/APKBuilds/flutdot_test.apk)
+
 ## Getting Started
 
 1. Make a Godot Web export to the flutdot_flutter/GoDotExport/ folder.
@@ -46,3 +49,5 @@ Implement GoDot native Android Export in Flutter | Planned | Planned
 
 #### This packages based on the following packages
 - [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview)
+- [socket.io](https://socket.io/)
+- [Axios](https://github.com/axios/axios)
