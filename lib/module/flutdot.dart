@@ -63,7 +63,8 @@ class FlutDot {
 
   void sendMessage(String channel, String msg) {
     if (_webcontroller != null) {
-      _webcontroller.evaluateJavascript(source: 'alert("${channel}:${msg}")');
+      _webcontroller.evaluateJavascript(
+          source: 'goDotJSChannel("{${channel}:${msg}}");');
     }
   }
 }

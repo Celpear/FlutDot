@@ -116,8 +116,8 @@
 <link rel='apple-touch-icon' href='index.apple-touch-icon.png'/>
 <!-- Custom function to communicate with Flutter -->
 <script>
-function goDotJSChannel() {
-    alert("My func!");
+function goDotJSChannel(data) {
+    alert("GoDot JS function:"+data);
 }
 </script>
 
@@ -161,7 +161,7 @@ var t=/^(?:(?![^:@]+:[^:@\/]*@)(http|https|ws|wss):\/\/)?((?:(([^:@]*)(?::([^:@]
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":8320,"index.wasm":17860295},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":8352,"index.wasm":17860295},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {

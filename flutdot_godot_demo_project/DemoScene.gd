@@ -15,7 +15,7 @@ func _ready():
 	# Get the `window` object, where globally defined functions are.
 	var window = JavaScript.get_interface("window")
 	# Call the JavaScript `myFunc` function defined in the custom HTML head.
-	window.goDotJSChannel()
+	window.goDotJSChannel("GoDot inizialized :)")
 	# Get the `axios` library (loaded from a CDN in the custom HTML head).
 	var axios = JavaScript.get_interface("axios")
 	# Make a GET request to the current location, and receive the callback when done.
