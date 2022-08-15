@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'module/flutdot.dart';
+import 'package:sensors_plus/sensors_plus.dart';
 
 late FlutDot FlutDotHandler;
 
@@ -38,6 +39,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String godotData = "";
+  late MagnetometerEvent magEvent;
   @override
   void initState() {
     // TODO: implement initState
@@ -45,6 +47,10 @@ class _HomePageState extends State<HomePage> {
       godotData = data.toString();
       setState(() {});
     };
+    magnetometerEvents.listen((MagnetometerEvent event) {
+      magEvent = event;
+      print("MagnetometerEvent:" + event.toString());
+    });
   }
 
   @override
@@ -62,7 +68,7 @@ class _HomePageState extends State<HomePage> {
             child: TextButton(
               child: Text("Send Hello Hero! -> GoDot"),
               onPressed: () {
-                FlutDotHandler.sendMessage("Data", "Hello Hero!");
+                FlutDotHandler.sendMessage("AlertData", "Hello Hero!");
               },
             ),
           )

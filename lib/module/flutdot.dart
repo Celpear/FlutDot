@@ -63,8 +63,9 @@ class FlutDot {
 
   void sendMessage(String channel, String msg) {
     if (_webcontroller != null) {
+      Map<String, String> rawdata = {"channel": "${channel}", "msg": "${msg}"};
       _webcontroller.evaluateJavascript(
-          source: 'goDotJSChannel("{${channel}:${msg}}");');
+          source: 'goDotJSChannel("${Uri.encodeFull(jsonEncode(rawdata))}");');
     }
   }
 }

@@ -51,3 +51,4 @@ Implement GoDot native Android Export in Flutter | Planned | Planned
 - [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview)
 - [socket.io](https://socket.io/)
 - [Axios](https://github.com/axios/axios)
+- [sensors_plus](https://pub.dev/packages/sensors_plus)
