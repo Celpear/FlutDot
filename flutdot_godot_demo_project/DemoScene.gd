@@ -1,7 +1,7 @@
 extends Node
 
 # The URL we will connect to.
-export var websocket_url = "ws://localhost:8080"
+export var websocket_url = "ws://localhost:1996"
 
 # Our WebSocketClient instance.
 var _client = WebSocketClient.new()

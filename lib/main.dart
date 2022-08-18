@@ -43,13 +43,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // TODO: implement initState
-    FlutDotHandler.cb = (data) {
-      godotData = data.toString();
-      setState(() {});
+    FlutDotHandler.msgReceiveCB = (data, da) {
+      print(data);
     };
     magnetometerEvents.listen((MagnetometerEvent event) {
       magEvent = event;
-      print("MagnetometerEvent:" + event.toString());
+      //print("MagnetometerEvent:" + event.toString());
     });
   }
 
@@ -68,7 +67,8 @@ class _HomePageState extends State<HomePage> {
             child: TextButton(
               child: Text("Send Hello Hero! -> GoDot"),
               onPressed: () {
-                FlutDotHandler.sendMessage("AlertData", "Hello Hero!");
+                //FlutDotHandler.sendMessage("AlertData", "Hello Hero!");
+                FlutDotHandler.sendMessage("GG");
               },
             ),
           )
