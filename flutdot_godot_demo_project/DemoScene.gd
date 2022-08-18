@@ -1,25 +1,56 @@
-extends Spatial
+extends Node
 
-# Here create a reference to the `_on_get` function (below).
-# This reference will be kept until the node is freed.
-var _callback = JavaScript.create_callback(self, "_on_get")
+# The URL we will connect to.
+export var websocket_url = "ws://localhost:8080"
 
+# Our WebSocketClient instance.
+var _client = WebSocketClient.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	# Get the `window` object, where globally defined functions are.
-	var window = JavaScript.get_interface("window")
-	# Call the JavaScript
-	#window.goDotJSChannel("GoDot to JS Function :)")
-	# Get the `axios` library (loaded from a CDN in the custom HTML head).
-	var axios = JavaScript.get_interface("axios")
-	# Make a GET request to the current location, and receive the callback when done.
-	axios.get(window.location.toString()).then(_callback)
-	pass # Replace with function body.
+	# Connect base signals to get notified of connection open, close, and errors.
+	_client.connect("connection_closed", self, "_closed")
+	_client.connect("connection_error", self, "_closed")
+	_client.connect("connection_established", self, "_connected")
+	# This signal is emitted when not using the Multiplayer API every time
+	# a full packet is received.
+	# Alternatively, you could check get_peer(1).get_available_packets() in a loop.
+	_client.connect("data_received", self, "_on_data")
+
+	# Initiate connection to the given URL.
+	var err = _client.connect_to_url(websocket_url)
+	if err != OK:
+		print("Unable to connect")
+		set_process(false)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-func _on_get(args):
-	OS.alert("GoDot Callback"+args)
+func _closed(was_clean = false):
+	# was_clean will tell you if the disconnection was correctly notified
+	# by the remote peer before closing the socket.
+	print("Closed, clean: ", was_clean)
+	set_process(false)
+
+
+func _connected(proto = ""):
+	# This is called on connection, "proto" will be the selected WebSocket
+	# sub-protocol (which is optional)
+	print("Connected with protocol: ", proto)
+	# You MUST always use get_peer(1).put_packet to send data to server,
+	# and not put_packet directly when not using the MultiplayerAPI.
+	_client.get_peer(1).put_packet("Test packet".to_utf8())
+
+
+func _on_data():
+	# Print the received packet, you MUST always use get_peer(1).get_packet
+	# to receive data from server, and not get_packet directly when not
+	# using the MultiplayerAPI.
+	print("Got data from server: ", _client.get_peer(1).get_packet().get_string_from_utf8())
+
+
+func _process(_delta):
+	# Call this in _process or _physics_process. Data transfer, and signals
+	# emission will only happen when calling this function.
+	_client.poll()
+
+
+func _exit_tree():
+	_client.disconnect_from_host()

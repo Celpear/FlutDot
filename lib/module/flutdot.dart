@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -13,7 +13,9 @@ class FlutDot {
   ///Must be initialized in the void main(){}
   FlutDot([int port = 1878]) {
     _localPort = port;
-    _localhostServer = InAppLocalhostServer(port: _localPort);
+    if (!kIsWeb) {
+      _localhostServer = InAppLocalhostServer(port: _localPort);
+    }
     // start the localhost server
     _startServer();
   }
@@ -30,7 +32,7 @@ class FlutDot {
     // start the localhost server
     try {
       WidgetsFlutterBinding.ensureInitialized();
-      await _localhostServer.start();
+      if (!kIsWeb) await _localhostServer.start();
       if (Platform.isAndroid) {
         await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(
             true);

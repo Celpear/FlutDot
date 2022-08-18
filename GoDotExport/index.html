@@ -137,6 +137,15 @@ var t=/^(?:(?![^:@]+:[^:@\/]*@)(http|https|ws|wss):\/\/)?((?:(([^:@]*)(?::([^:@]
 function goDotJSChannel(data) {
 	data = decodeURIComponent(data);
     alert("Receive in GoDot from Flutter:"+data);
+	_on_get();
+}
+function goDotCall(cb) {
+	alert(typeof cb);
+	function gg = cb;
+	gg();
+}
+function myFunc() {
+    alert("My func!");
 }
 </script>
 </head>
@@ -163,7 +172,7 @@ function goDotJSChannel(data) {
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":8896,"index.wasm":17860295},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":9776,"index.wasm":17860295},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
