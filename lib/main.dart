@@ -61,6 +61,7 @@ class _HomePageState extends State<HomePage> {
       magEvent = event;
       //print("MagnetometerEvent:" + event.toString());
     });
+    initServer();
   }
 
   @override
@@ -90,14 +91,15 @@ class _HomePageState extends State<HomePage> {
 }
 
 void initServer() {
-  HttpServer.bind('localhost', 8000).then((HttpServer server) {
-    print('[+]WebSocket listening at -- ws://localhost:8000/');
+  print("FlutDot: Init Server!");
+  HttpServer.bind('localhost', 8170).then((HttpServer server) {
+    print('FlutDot: [+]WebSocket listening at -- ws://localhost:8170/');
     server.listen((HttpRequest request) {
       WebSocketTransformer.upgrade(request).then((WebSocket ws) {
         ws.listen(
           (data) {
             print(
-                '\t\t FluDot:${request?.connectionInfo?.remoteAddress} -- ${Map<String, String>.from(json.decode(data))}');
+                '\t\t FlutDot:${request?.connectionInfo?.remoteAddress} -- ${Map<String, String>.from(json.decode(data))}');
 
             Timer(Duration(seconds: 1), () {
               if (ws.readyState == WebSocket.open)
